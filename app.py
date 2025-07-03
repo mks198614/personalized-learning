@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain.document_loaders import UnstructuredPDFLoader
+from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
@@ -21,7 +21,7 @@ if uploaded_file:
 
     with st.spinner("🔄 Loading and Splitting PDF..."):
         try:
-            loader = UnstructuredPDFLoader(pdf_path)
+            loader = PyPDFLoader(pdf_path)
             documents = loader.load()
             st.write("✅ PDF Loaded")
 
