@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain.document_loaders import PyMuPDFLoader
+from langchain.document_loaders import UnstructuredPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
@@ -10,7 +10,7 @@ import tempfile
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
 st.set_page_config(page_title="Personalized learning with LLM", page_icon="📘")
-st.title("📘 personalized learning using LLM")
+st.title("📘 Personalized Learning Using LLM")
 
 uploaded_file = st.file_uploader("Upload your Notes (PDF)", type=["pdf"])
 
@@ -21,7 +21,7 @@ if uploaded_file:
 
     with st.spinner("🔄 Loading and Splitting PDF..."):
         try:
-            loader = PyMuPDFLoader(pdf_path)
+            loader = UnstructuredPDFLoader(pdf_path)
             documents = loader.load()
             st.write("✅ PDF Loaded")
 
