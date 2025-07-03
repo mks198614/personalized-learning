@@ -3,4 +3,4 @@ transformers
 sentence-transformers
 langchain
 faiss-cpu
-PyMuPDF
+pypdf
